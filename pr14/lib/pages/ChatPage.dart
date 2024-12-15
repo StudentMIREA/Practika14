@@ -24,12 +24,13 @@ class _ChatPageState extends State<ChatPage> {
     persons = ApiService().allUsers();
   }
 
-  void navToUserChat(BuildContext context, String user) async {
+  void navToUserChat(BuildContext context, String user, String name) async {
     await Navigator.push(
       context,
       MaterialPageRoute(
           builder: (context) => CurrentChatPage(
                 userName: user,
+                Name: name,
               )),
     );
   }
@@ -61,8 +62,8 @@ class _ChatPageState extends State<ChatPage> {
                         padding: const EdgeInsets.only(
                             top: 5.0, left: 10.0, right: 10.0),
                         child: GestureDetector(
-                          onTap: () =>
-                              navToUserChat(context, allUsers[index].mail),
+                          onTap: () => navToUserChat(context,
+                              allUsers[index].mail, allUsers[index].name),
                           child: Container(
                             decoration: BoxDecoration(
                               color: const Color.fromARGB(255, 255, 246, 218),
@@ -122,8 +123,9 @@ class _ChatPageState extends State<ChatPage> {
 }
 
 class CurrentChatPage extends StatefulWidget {
-  const CurrentChatPage({super.key, this.userName});
+  const CurrentChatPage({super.key, this.userName, this.Name});
   final userName;
+  final Name;
 
   @override
   State<CurrentChatPage> createState() => _CurrentChatPageState();
@@ -153,8 +155,8 @@ class _CurrentChatPageState extends State<CurrentChatPage> {
     return Scaffold(
         backgroundColor: Colors.amber[200],
         appBar: AppBar(
-          title: widget.userName != null
-              ? Text(widget.userName!)
+          title: widget.Name != null
+              ? Text(widget.Name!)
               : const Text('Чат с продавцом'),
           backgroundColor: Colors.white70,
         ),
