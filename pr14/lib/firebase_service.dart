@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:pr14/api_service.dart';
 import 'package:pr14/auth/auth_service.dart';
 import 'package:pr14/model/massege.dart';
-import 'package:pr14/model/person.dart';
-import 'package:dio/dio.dart';
 
 class ChatService extends ChangeNotifier {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
