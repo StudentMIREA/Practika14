@@ -31,5 +31,6 @@
 
 #### Конечный результат
 
-https://github.com/user-attachments/assets/269759ab-8000-4989-81c2-8dfd7d847647
+https://github.com/user-attachments/assets/8952e51b-6993-4c5c-b544-13e5eb3ddaa1
+
 
