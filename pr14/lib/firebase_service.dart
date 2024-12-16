@@ -10,8 +10,6 @@ class ChatService extends ChangeNotifier {
 
   final ApiService apiService = ApiService();
 
-  final ip = '192.168.1.121';
-
   Future<void> sendMessage(String mail, String massege) async {
     try {
       final userEmail = AuthService().getCurrentUserEmail();
