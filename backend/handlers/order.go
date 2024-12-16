@@ -30,7 +30,7 @@ func GetOrders(db *sqlx.DB) gin.HandlerFunc {
 			FROM orders o
 			LEFT JOIN order_products op ON o.id = op.order_id
 			LEFT JOIN products p ON op.product_id = p.id
-			WHERE o.user_id = $1
+			WHERE o.user_id = $1 ORDER BY o.created_at DESC
 		`
 
 		rows, err := db.Query(query, id)
