@@ -42,10 +42,10 @@ class OrderPage extends StatelessWidget {
             return Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             // Если произошла ошибка, отображаем сообщение об ошибке
-            return Center(child: Text('Нет заказов.'));
+            return Center(child: Text('Нет заказов'));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
             // Если нет данных, отображаем сообщение об отсутствии заказов
-            return const Center(child: Text('Нет заказов.'));
+            return const Center(child: Text('Нет заказов'));
           }
 
           // Если данные успешно загружены, отображаем список заказов

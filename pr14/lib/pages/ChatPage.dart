@@ -43,79 +43,83 @@ class _ChatPageState extends State<ChatPage> {
               title: Text('Чаты'),
               backgroundColor: Colors.white70,
             ),
-            body: FutureBuilder<List<Person>>(
-              future: persons,
-              builder: (context, snapshot) {
-                if (snapshot.hasError) {
-                  return const Text('Ошибка загрузки сообщений');
-                } else if (snapshot.connectionState ==
-                    ConnectionState.waiting) {
-                  return CircularProgressIndicator();
-                }
-                final allUsers = snapshot.data!;
+            body: Center(
+              child: FutureBuilder<List<Person>>(
+                future: persons,
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return const Text('Ошибка загрузки сообщений');
+                  } else if (snapshot.connectionState ==
+                      ConnectionState.waiting) {
+                    return CircularProgressIndicator();
+                  }
+                  final allUsers = snapshot.data!;
 
-                return ListView.builder(
-                    itemCount: allUsers.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Padding(
-                        padding: const EdgeInsets.only(
-                            top: 5.0, left: 10.0, right: 10.0),
-                        child: GestureDetector(
-                          onTap: () => navToUserChat(context,
-                              allUsers[index].mail, allUsers[index].name),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 255, 246, 218),
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(15.0),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    width: MediaQuery.of(context).size.width *
-                                        0.10,
-                                    height: MediaQuery.of(context).size.width *
-                                        0.10,
-                                    decoration: BoxDecoration(
-                                        color: Colors.amber[100],
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                            color: Colors.grey, width: 2),
-                                        image: DecorationImage(
-                                          image: NetworkImage(
-                                              allUsers[index].image),
-                                          fit: BoxFit.cover,
-                                        )),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 15.0),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              bottom: 5.0),
-                                          child: Text(
-                                            allUsers[index].name,
-                                            style:
-                                                const TextStyle(fontSize: 14.0),
-                                          ),
-                                        ),
-                                      ],
+                  return ListView.builder(
+                      itemCount: allUsers.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                          padding: const EdgeInsets.only(
+                              top: 5.0, left: 10.0, right: 10.0),
+                          child: GestureDetector(
+                            onTap: () => navToUserChat(context,
+                                allUsers[index].mail, allUsers[index].name),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 255, 246, 218),
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(15.0),
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.10,
+                                      height:
+                                          MediaQuery.of(context).size.width *
+                                              0.10,
+                                      decoration: BoxDecoration(
+                                          color: Colors.amber[100],
+                                          shape: BoxShape.circle,
+                                          border: Border.all(
+                                              color: Colors.grey, width: 2),
+                                          image: DecorationImage(
+                                            image: NetworkImage(
+                                                allUsers[index].image),
+                                            fit: BoxFit.cover,
+                                          )),
                                     ),
-                                  ),
-                                ],
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(left: 15.0),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                bottom: 5.0),
+                                            child: Text(
+                                              allUsers[index].name,
+                                              style: const TextStyle(
+                                                  fontSize: 14.0),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      );
-                    });
-              },
+                        );
+                      });
+                },
+              ),
             ))
         : CurrentChatPage();
   }
