@@ -6,6 +6,7 @@ import 'package:pr14/model/person.dart';
 class ApiService {
   final Dio _dio = Dio();
 
+  //final ip = '192.168.137.1';
   final ip = '192.168.1.121';
 
   Future<List<Items>> getProducts(String email) async {

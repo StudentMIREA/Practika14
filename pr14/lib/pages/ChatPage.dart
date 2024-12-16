@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:pr14/api_service.dart';
 import 'package:pr14/auth/auth_service.dart';
 import 'package:pr14/firebase_service.dart';
 import 'package:pr14/model/massege.dart';
@@ -21,7 +20,7 @@ class _ChatPageState extends State<ChatPage> {
   @override
   void initState() {
     super.initState();
-    persons = ApiService().allUsers();
+    persons = ChatService().getUniqueSenders();
   }
 
   void navToUserChat(BuildContext context, String user, String name) async {

@@ -42,11 +42,10 @@ class OrderPage extends StatelessWidget {
             return Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             // Если произошла ошибка, отображаем сообщение об ошибке
-            return Center(
-                child: Text('Ошибка загрузки заказов: ${snapshot.error}'));
+            return Center(child: Text('Нет заказов.'));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
             // Если нет данных, отображаем сообщение об отсутствии заказов
-            return Center(child: Text('Нет заказов.'));
+            return const Center(child: Text('Нет заказов.'));
           }
 
           // Если данные успешно загружены, отображаем список заказов
@@ -68,7 +67,7 @@ class OrderPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('Номер заказа: ${order.orderId}',
-                          style: TextStyle(fontWeight: FontWeight.bold)),
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
                       Text('Статус: ${order.status}'),
                       Text(
                           'Дата создания: ${order.createdAt.toLocal().toString().split(' ')[0]}'),
@@ -103,9 +102,9 @@ class OrderPage extends StatelessWidget {
                                       fit: BoxFit.cover,
                                     ), // Изображение продукта
                                     Text('Кол-во: ${product.quantity}',
-                                        style: TextStyle(
-                                            color: const Color.fromARGB(
-                                                255, 0, 0, 0))),
+                                        style: const TextStyle(
+                                            color:
+                                                Color.fromARGB(255, 0, 0, 0))),
                                   ],
                                 ),
                               ),
